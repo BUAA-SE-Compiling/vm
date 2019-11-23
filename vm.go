@@ -217,7 +217,7 @@ func (vm *VM) runNext() error {
 	case iMUL:
 		mul := func(x int32, y int32) (int32, error) {
 			r := x * y
-			if y != 0 && r/y == x {
+			if y == 0 || r/y == x {
 				return y * x, nil
 			}
 			return 0, ErrAlgorithmOverflow
